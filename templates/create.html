@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="create" >
+        
+
+    <form class="login-list" action="{{url_for('create')}}" method="POST">
+        <h2 class="signin">CREATE A BLOG</h2>
+    
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" required>
+    
+    
+        <label>Message</label>
+        <textarea rows="5" class="form-control" name="message" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+    
+        <div class="not-signup">
+            <button class="w-50 btn btn-primary" type="submit">post</button><br>
+        </div>
+    </form>
+</main>
+
+{%endblock content %}

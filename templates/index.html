@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+{% if current_user.is_authenticated %}
+<h1 class="intro">welcome! {{current_user.username}} to the blog</h1>
+{%else%}
+<h1 class="intro">welcome!</h1>
+{%endif%}
+{% for message in get_flashed_messages() %}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  
+
+{% endfor %}
+
+{% if current_user.is_authenticated %}
+    {% if not posts %}
+      <p class="blog-info">
+        No blog has been posted yet.
+        <a href="{{url_for('create')}}">Create One</a>
+      </p>
+    {%else%}
+        {% for post in posts%}
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-preview">
+                    <a class="post-title" href="/blog/{{post.id}}">
+                      <h2>
+                        {{post.title}}
+                      </h2>
+                    </a>
+                    <p class="post-meta">Posted by
+                      <span class="author-name">{{post.author}}</span>  {{post.date_posted.strftime('%d, %b %Y.')}}
+                    </p>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+        {%endfor%}
+    {% endif %}
+
+{% else %}
+    <p class="blog-info"><a href="{{url_for('login')}}">Log In</a> to create a blog and share to the world</p>
+
+    {% for post in posts%}
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-preview">
+                    <a href="/blog/{{post.id}}">
+                      <h2 class="post-title">
+                        {{post.title}}
+                      </h2>
+                    </a>
+                    <p class="post-meta">Posted by
+                      <a href="#">{{post.author}}</a>
+                    </p>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+        {%endfor%}
+{%endif%}
+
+ 
+
+
+{% endblock content %}

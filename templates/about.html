@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+<div class=" container about-info">
+    {% if current_user.is_authenticated %}
+    <h2>Hello, {{ current_user.username }}! </h2>
+    {% else %}
+    <h2>Hello and Welcome!</h2>
+    {% endif %}
+    <p>
+    This blog site is a place for everyone to share their thought to the world and also view other peoples thought and learn from them.
+    </p>
+    <p>
+    Logging is not required to read articles on this blog site, but you'll have
+    to <a href="{{url_for('login')}}">log in</a> to create your post and access extra feature
+    in the blog site.
+    </p>
+    <br />
+
+    <br />
+    <p>
+    This blog site was created and hosted by <span class="author-name">Mgbemena Chimaobi Ephraim</span> , a
+    Backend Engineering student at
+    <a href="https://altschoolafrica.com/schools/engineering">AltSchool Africa</a>
+    who is learning about Python Flask framework. Learn more
+    about me on <a href="https://github.com/Darrkzero">GitHub</a> and
+    <a href="https://twitter.com/Darrkzero">Twitter</a>, or send a message
+    <a href="{{url_for('contact')}}">here</a> and a feedback about the site will be very much appreciated.
+    </p>
+    <br />
+</div>
+
+{% endblock content %}

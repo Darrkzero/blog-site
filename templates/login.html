@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+    <main class="login-back" >
+        
+
+        <form class="login-list" action="{{url_for('login')}}" method="POST">
+            <h2 class="signin">SIGN IN</h2>
+        
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+        
+        
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+        
+            <div class="not-signup">
+                <button class="w-50 btn btn-primary" type="submit">sign in</button><br>
+                <div class="already">
+                Don't have an account? <a href="/signup" >sign up.</a>
+                </div>
+            </div>
+        </form>
+    </main>
+
+{%endblock content %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="create" >
+        
+    <form class="update-list" action="{{url_for('update',id=edit_user.id)}}" method="POST">
+        <h2 class="signin">EDIT YOUR BLOG</h2>
+    
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" required value="{{edit_user.title}}">
+    
+    
+        <label>Message</label>
+        <textarea rows="5" class="form-control" name="message"  placeholder="Message" id="message" required data-validation-required-message="Please enter a message.">{{edit_user.content}}</textarea>
+    
+        <div class="not-signup">
+            <button class="w-50 btn btn-primary" type="submit">edit</button><br>
+        </div>
+    </form>
+</main>
+
+{%endblock content %}
